@@ -1,25 +1,36 @@
-version: "3.9"
+version: '3.9'
 
 services:
   nginx:
     image: nginx:latest
-    volumes:
-      # - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
-      # - ./config/conf.d:/etc/nginx/conf.d:ro
-      - ./system/index.html:/var/www/html:ro  # Changed this line
     ports:
-      - "8080:80"
-    networks:
-      - network_public
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - wordpress
     deploy:
       replicas: 1
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 128M
       restart_policy:
         condition: on-failure
 
+  wordpress:
+    image: wordpress:latest
+    environment:
+      WORDPRESS_DB_HOST: your_db_host
+      WORDPRESS_DB_USER: your_db_user
+      WORDPRESS_DB_PASSWORD: your_db_password
+      WORDPRESS_DB_NAME: your_db_name
+    volumes:
+      - wordpress_data:/var/www/html
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+volumes:
+  wordpress_data:
+
 networks:
-  network_public:
-    external: true
+  default:
+    driver: overlay
