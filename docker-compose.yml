@@ -7,6 +7,7 @@ services:
       - "8080:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - wordpress_data:/var/www/html:ro
     depends_on:
       - wordpress
     deploy:
@@ -21,6 +22,8 @@ services:
       WORDPRESS_DB_USER: your_db_user
       WORDPRESS_DB_PASSWORD: your_db_password
       WORDPRESS_DB_NAME: your_db_name
+    ports:
+      - "8080:80" 
     volumes:
       - wordpress_data:/var/www/html
     deploy:
