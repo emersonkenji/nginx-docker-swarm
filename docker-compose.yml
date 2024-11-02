@@ -4,8 +4,8 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./config/conf.d:/etc/nginx/conf.d:ro
+      # - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+      # - ./config/conf.d:/etc/nginx/conf.d:ro
       - ./system:/var/www/html:ro  # Changed this line
     ports:
       - "8080:80"
