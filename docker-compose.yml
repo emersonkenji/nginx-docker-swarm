@@ -5,7 +5,7 @@ services:
     image: nginx:latest
     volumes:
       # - ./config/nginx.conf:/etc/nginx/nginx.conf
-      - ./system:/var/www/html:ro
+      - ./system/index.html:/var/www/html:ro
     ports:
       - "8080:80"
     networks:
