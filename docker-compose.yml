@@ -16,6 +16,11 @@ services:
         limits:
           cpus: "0.5"
           memory: 128M
+      restart_policy:
+          condition: on-failure
+      placement:
+          constraints:
+            - node.role == manager
 networks:
   network_public:
     external: true
