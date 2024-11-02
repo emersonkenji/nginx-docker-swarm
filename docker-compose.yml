@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf
+      - ./system:/var/www/html:ro
+    ports:
+      - "8080:80"
+    networks:
+      - network_public
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 128M
+networks:
+  network_public:
+    external: true
