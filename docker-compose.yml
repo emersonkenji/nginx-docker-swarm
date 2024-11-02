@@ -4,8 +4,9 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./config/nginx.conf:/etc/nginx/nginx.conf
-      - ./system/index.html:/var/www/html:ro
+      - ./config/nginx.conf:/etc/nginx/nginx.conf  # Arquivo nginx.conf
+      - ./config/conf.d:/etc/nginx/conf.d  # Diretório conf.d com my_site.conf
+      - ./system:/var/www/html:ro  # Diretório para os arquivos do site
     ports:
       - "8080:80"
     networks:
