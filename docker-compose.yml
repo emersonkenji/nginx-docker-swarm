@@ -4,8 +4,6 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx_test
-    ports:
-      - "8090:80"
     volumes:
       - ./system/index.html:/usr/share/nginx/html/index.html:ro
     deploy:
