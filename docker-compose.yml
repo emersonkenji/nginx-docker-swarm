@@ -31,10 +31,10 @@ version: '3.8'
 services:
   nginx_web:
     image: nginx:latest
-    ports:
-      - "8088:80"
-    volumes:
-      - ./system:/usr/share/nginx/html:ro
+    # ports:
+    #   - "8088:80"
+    # volumes:
+    #   - ./system:/usr/share/nginx/html:ro
     deploy:
       mode: replicated
       replicas: 2
@@ -43,10 +43,10 @@ services:
           - node.role == worker
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx_web.rule=Host(`app.emersontakada.co.uk`)"
+      - "traefik.http.routers.nginx_web.rule=Host(`teste.emersontakada.co.uk`)"
       - "traefik.http.routers.nginx_web.entrypoints=websecure"
       - "traefik.http.routers.nginx_web.tls.certresolver=le"
-      - "traefik.http.services.nginx_web.loadbalancer.server.port=8088"
+      - "traefik.http.services.nginx_web.loadbalancer.server.port=80"
       - "traefik.http.services.nginx_web.loadbalancer.sticky=true"
     networks:
       - proxy
