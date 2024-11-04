@@ -4,7 +4,7 @@ services:
   nginx_web:
     build:
       context: .
-      dockerfile: /config/Dockerfile
+      dockerfile: Dockerfile
     volumes:
       - nginx_data:/usr/share/nginx/html
     deploy:
