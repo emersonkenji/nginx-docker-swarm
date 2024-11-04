@@ -3,7 +3,7 @@ version: '3.8'
 services:
   nginx_web:
     build:
-      context: ./config
+      context: ./config/
       dockerfile: Dockerfile
     volumes:
       - nginx_data:/usr/share/nginx/html
