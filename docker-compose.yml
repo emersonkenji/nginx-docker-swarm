@@ -34,7 +34,7 @@ services:
     # ports:
     #   - "8088:80"
     volumes:
-      - "./public_html:/usr/share/nginx/html:ro"
+      - "data_html:/usr/share/nginx/html:ro"
     deploy:
       mode: replicated
       replicas: 2
@@ -53,4 +53,8 @@ services:
 
 networks:
   proxy:
-    external: true    
+    external: true
+volumes:
+  data_html:
+    external: true
+       
