@@ -46,7 +46,7 @@ services:
       - "traefik.http.routers.nginx_web.rule=Host(`app.emersontakada.co.uk`)"
       - "traefik.http.routers.nginx_web.entrypoints=websecure"
       - "traefik.http.routers.nginx_web.tls.certresolver=le"
-      - "traefik.http.services.nginx_web.loadbalancer.server.port=80"
+      - "traefik.http.services.nginx_web.loadbalancer.server.port=8088"
       - "traefik.http.services.nginx_web.loadbalancer.sticky=true"
     networks:
       - proxy
