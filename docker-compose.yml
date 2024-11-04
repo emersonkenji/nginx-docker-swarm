@@ -11,9 +11,9 @@ services:
     deploy:
       mode: replicated
       replicas: 2
-      placement:
-        constraints:
-          - node.role == worker
+      # placement: 
+      #   constraints:
+      #     - node.role == worker
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nginx.rule=Host(`emersontakada.co.uk`)"
