@@ -16,7 +16,7 @@ services:
       #     - node.role == worker
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`emersontakada.co.uk`)"
+      - "traefik.http.routers.nginx.rule=Host(`teste.emersontakada.co.uk`)"
       - "traefik.http.routers.nginx.entrypoints=websecure"
       - "traefik.http.routers.nginx.tls.certresolver=le"
       - "traefik.http.services.nginx.loadbalancer.server.port=80"
