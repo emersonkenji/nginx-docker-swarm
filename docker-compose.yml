@@ -1,16 +1,19 @@
-version: '3.8'
+version: '3.9'
 
 services:
   nginx:
     image: nginx:latest
-    container_name: nginx_test
+    # container_name: nginx_test
+    ports:
+      - "8088:80"
     volumes:
-      - ./system/index.html:/usr/share/nginx/html/index.html:ro
+      - ./system:/usr/share/nginx/html:ro
     deploy:
       mode: replicated
       replicas: 2
       placement:
         constraints:
+          - node.role == manager
           - node.role == worker
     labels:
       - "traefik.enable=true"
@@ -21,7 +24,6 @@ services:
       - "traefik.http.services.nginx.loadbalancer.sticky=true"
     networks:
       - proxy
-
 networks:
   proxy:
     external: true
