@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  nginx:
+  nginx_web:
     image: nginx:latest
     # container_name: nginx_test
     ports:
@@ -16,11 +16,11 @@ services:
       #     - node.role == worker
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`teste.emersontakada.co.uk`)"
-      - "traefik.http.routers.nginx.entrypoints=websecure"
-      - "traefik.http.routers.nginx.tls.certresolver=le"
-      - "traefik.http.services.nginx.loadbalancer.server.port=80"
-      - "traefik.http.services.nginx.loadbalancer.sticky=true"
+      - "traefik.http.routers.nginx_web.rule=Host(`emersontakada.co.uk`)"
+      - "traefik.http.routers.nginx_web.entrypoints=websecure"
+      - "traefik.http.routers.nginx_web.tls.certresolver=le"
+      - "traefik.http.services.nginx_web.loadbalancer.server.port=80"
+      - "traefik.http.services.nginx_web.loadbalancer.sticky=true"
     networks:
       - proxy
 networks:
