@@ -33,8 +33,8 @@ services:
     image: nginx:latest
     # ports:
     #   - "8088:80"
-    # volumes:
-    #   - ./system:/usr/share/nginx/html:ro
+    volumes:
+      - ./system:/usr/share/nginx/html:ro
     deploy:
       mode: replicated
       replicas: 2
