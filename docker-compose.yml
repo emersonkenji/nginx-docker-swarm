@@ -1,18 +1,46 @@
+# version: '3.9'
+
+# services:
+#   nginx_web:
+#     image: nginx:latest
+#     # container_name: nginx_test
+#     ports:
+#       - "8088:80"
+#     volumes:
+#       - ./system:/usr/share/nginx/html:ro
+#     deploy:
+#       mode: replicated
+#       replicas: 2
+#       placement: 
+#         constraints: []
+#     labels:
+#       - "traefik.enable=true"
+#       - "traefik.http.routers.nginx_web.rule=Host(`emersontakada.co.uk`)"
+#       - "traefik.http.routers.nginx_web.entrypoints=websecure"
+#       - "traefik.http.routers.nginx_web.tls.certresolver=le"
+#       - "traefik.http.services.nginx_web.loadbalancer.server.port=80"
+#       - "traefik.http.services.nginx_web.loadbalancer.sticky=true"
+#     networks:
+#       - proxy
+# networks:
+#   proxy:
+#     external: true
+
 version: '3.8'
 
 services:
   nginx_web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: nginx:latest
+    # ports:
+    #   - "8088:80"
     volumes:
-      - nginx_data:/usr/share/nginx/html
+      - "./public_html:/usr/share/nginx/html:ro"
     deploy:
       mode: replicated
       replicas: 2
       placement:
         constraints:
-          - node.role == manager
+          - node.role == worker
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nginx_web.rule=Host(`teste.emersontakada.co.uk`)"
@@ -25,7 +53,4 @@ services:
 
 networks:
   proxy:
-    external: true
-
-volumes:
-  nginx_data:
+    external: true    
