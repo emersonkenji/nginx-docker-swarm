@@ -54,18 +54,6 @@ services:
     deploy:
       mode: replicated
       replicas: 1
-      update_config:
-        order: start-first
-        failure_action: rollback
-      restart_policy:
-        condition: any
-        delay: 5s
-        max_attempts: 3
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
 
 volumes:
   wordpress_data_bitnami:
