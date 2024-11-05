@@ -17,7 +17,7 @@ services:
       - WORDPRESS_DB_PASSWORD=Ken172ji
       - WP_REDIS_HOST=redis
       - WP_REDIS_DATABASE=6
-      - VIRTUAL_HOST=teste.emersontakada.co.uk
+      - VIRTUAL_HOST=emersontakada.co.uk
       - WP_LOCALE=pt_BR
       # - WORDPRESS_CONFIG_EXTRA=define('FS_METHOD', 'direct');
       - WORDPRESS_DEBUG=1
@@ -33,7 +33,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
-      - "traefik.http.routers.nginx.rule=Host(`teste.emersontakada.co.uk`)"
+      - "traefik.http.routers.nginx.rule=Host(`emersontakada.co.uk`)"
       - "traefik.http.routers.nginx.entrypoints=websecure"
       - "traefik.http.routers.nginx.tls.certresolver=le"
       - "traefik.http.services.nginx.loadbalancer.server.port=80"
