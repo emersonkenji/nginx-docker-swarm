@@ -7,6 +7,8 @@ services:
     networks:
       - proxy
       - network_public
+    depends_on:
+      - database 
     environment:
       - WORDPRESS_DB_NAME=bitnami_wordpress
       - WORDPRESS_DB_HOST=database
