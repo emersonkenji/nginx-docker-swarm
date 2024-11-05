@@ -29,28 +29,12 @@ services:
       - proxy
       - network_public
     labels:
-      # Configuração básica
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
-      
-      # Router HTTPS
-      - "traefik.http.routers.nginx-secure.rule=Host(`teste.emersontakada.co.uk`)"
-      - "traefik.http.routers.nginx-secure.entrypoints=websecure"
-      - "traefik.http.routers.nginx-secure.tls.certresolver=le"
-      - "traefik.http.routers.nginx-secure.service=nginx-service"
-      
-      # Service
-      - "traefik.http.services.nginx-service.loadbalancer.server.port=80"
-      - "traefik.http.services.nginx-service.loadbalancer.passHostHeader=true"
-      
-      # Middlewares
-      - "traefik.http.middlewares.nginx-secure-headers.headers.sslRedirect=true"
-      - "traefik.http.middlewares.nginx-secure-headers.headers.stsSeconds=31536000"
-      - "traefik.http.middlewares.nginx-secure-headers.headers.stsIncludeSubdomains=true"
-      - "traefik.http.middlewares.nginx-secure-headers.headers.stsPreload=true"
-      
-      # Aplicar middlewares ao router
-      - "traefik.http.routers.nginx-secure.middlewares=nginx-secure-headers"
+      - "traefik.http.routers.nginx.rule=Host(`teste.emersontakada.co.uk`)"
+      - "traefik.http.routers.nginx.entrypoints=websecure"
+      - "traefik.http.routers.nginx.tls.certresolver=le"
+      - "traefik.http.services.nginx.loadbalancer.server.port=80"
     deploy:
       mode: replicated
       replicas: 1
