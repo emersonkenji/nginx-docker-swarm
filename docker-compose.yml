@@ -17,6 +17,8 @@ services:
       - WP_REDIS_DATABASE=6
       - VIRTUAL_HOST=teste.emersontakada.co.uk
       - WP_LOCALE=pt_BR
+      - WORDPRESS_CONFIG_EXTRA=define('FS_METHOD', 'direct');
+      - WORDPRESS_DEBUG=1
 
   nginx:
     image: nginx:alpine
