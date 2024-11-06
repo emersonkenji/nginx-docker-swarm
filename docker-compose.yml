@@ -21,7 +21,7 @@ services:
       # - WORDPRESS_DEBUG=1
 
   nginx:
-    image: nginx:alpine
+    image: nginx:1.21-alpine
     depends_on:
       - wordpress
     # ports:
@@ -31,7 +31,7 @@ services:
     environment:
       - NGINX_HOST=${NGINX_HOST:-emersontakada.co.uk}
     volumes:
-      - wordpress_data_bitnami:/var/www/html:ro
+      - wordpress_data_bitnami:/var/www/html
       - ./config/conf.d:/etc/nginx/conf.d
       # - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
