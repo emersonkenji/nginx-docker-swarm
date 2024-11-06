@@ -29,7 +29,7 @@ services:
     expose:
       - 80
     environment:
-      - NGINX_HOST=${NGINX_HOST:emersontakada.co.uk}$ 
+      - NGINX_HOST=emersontakada.co.uk
     volumes:
       - wordpress_data_bitnami:/var/www/html:ro
       - ./config/conf.d:/etc/nginx/conf.d
